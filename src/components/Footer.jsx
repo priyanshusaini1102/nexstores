@@ -3,9 +3,9 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer
-  className="bg-transparentblack-100 text-center text-neutral-600 dark:bg-transparentblack-600 dark:text-neutral-200 lg:text-left">
+  className="bg-transparentblack-100 text-white center neutral-600 dark:bg-transparentblack-600 lg:text-white left">
 
-  <div className="mx-6 py-10 text-center md:text-left">
+  <div className="mx-6 py-10 text-white center md:text-white left">
     <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
       <div className="">
         <h6
@@ -32,22 +32,22 @@ const Footer = () => {
           Products
         </h6>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Angular</a
           >
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >React</a
           >
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Vue</a
           >
         </p>
         <p>
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Laravel</a
           >
         </p>
@@ -58,22 +58,22 @@ const Footer = () => {
           Useful links
         </h6>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Pricing</a
           >
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Settings</a
           >
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Orders</a
           >
         </p>
         <p>
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white neutral-600 dark:text-white neutral-200"
             >Help</a
           >
         </p>
@@ -138,10 +138,10 @@ const Footer = () => {
       </div>
     </div>
   </div>
-  <div className="bg-transparentneutral-200 p-6 text-center dark:bg-transparentneutral-700">
+  <div className="bg-transparentneutral-200 p-6 text-white center dark:bg-transparentneutral-700">
     <span>© 2023 Copyright:</span>
     <a
-      className="font-semibold text-neutral-600 dark:text-neutral-400"
+      className="font-semibold text-white neutral-600 dark:text-white neutral-400"
       href="https://tailwind-elements.com/"
       > Nexstores Technologies </a
     >

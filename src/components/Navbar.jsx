@@ -4,7 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import Logo from '../../public/img/Nexstores_banner_3d.png'
+import Logo from '../../public/img/NEXSTORES-removebg.png'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -19,7 +19,7 @@ function classNames(...classes) {
 const Navbar = () => {
   return (
     <div>
-        <Disclosure as="nav" className=" shadow shadow-violet-300 ">
+        <Disclosure as="nav" className=" bg-white text-black shadow shadow-violet-300 ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@ const Navbar = () => {
                   <Image src={Logo} className='block h-8 w-auto lg:hidden' alt="Nexstores"  />
                   <div className='hidden md:flex space-x-2 items-center font-sans font-semibold' >
                     <Image src={Logo} className='hidden h-8 w-auto lg:block' alt="Nexstores"  />
-                    <span className="text-white" >Nexstores</span>
+                    <span className="text-black" >Nexstores</span>
                   </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -50,8 +50,8 @@ const Navbar = () => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'shadow-violet-700 shadow-inner text-violet-50' : 'text-gray-300 hover:shadow-violet-700 shadow hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          item.current ? 'shadow-gray-800 shadow-inner text-black bg-gray-50' : 'text-black hover:shadow-violet-700 shadow hover:text-black',
+                          'rounded-md px-3 py-2 text-sm font-medium '
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
@@ -74,7 +74,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-violet-900 text-white' : 'text-gray-300 hover:bg-violet-700 hover:text-white',
+                    item.current ? 'bg-violet-900 text-white' : 'text-black hover:bg-violet-700 hover:text-black',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
