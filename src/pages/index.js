@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Banner />
       
-      <div className='p-4 flex flex-wrap md:justify-start justify-center items-center space-x-2 space-y-4 max-w-6xl mx-auto bg-white rounded-lg shadow-violet-500 shadow-xl' >
+      <div className='p-4 flex flex-wrap md:justify-around justify-center items-center space-x-2 space-y-4 max-w-6xl mx-auto bg-white rounded-lg shadow-violet-500 shadow-xl' >
       <ProductCard />
       <ProductCard />
       <ProductCard />
