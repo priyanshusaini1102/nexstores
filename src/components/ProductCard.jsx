@@ -4,8 +4,12 @@ import productImg from '../../public/img/products/clothing-store-app.png'
 
 const ProductCard = () => {
   return (
-    <div className='p-4 text-white bg-white w-52 mx-auto rounded-sm' >
-        <Image className=' object-fill ' src={productImg} alt='Product Image'  />
+    <div className='shadow-md border text-white bg-white w-60 mx-auto rounded' >
+        <Image className='rounded' src={productImg} alt='Product Image'  />
+        <div className='text-gray-700 font-sans p-2 py-3 font-semibold text-center' >
+          <p>Clothing Store App</p>
+          <p>₹10,000</p>
+        </div>
     </div>
   )
 }

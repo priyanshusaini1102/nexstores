@@ -50,7 +50,7 @@ const Navbar = () => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'shadow-gray-800 shadow-inner text-black bg-gray-50' : 'text-black hover:shadow-violet-700 shadow hover:text-black',
+                          item.current ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
                           'rounded-md px-3 py-2 text-sm font-medium '
                         )}
                         aria-current={item.current ? 'page' : undefined}
