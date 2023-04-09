@@ -1,8 +1,11 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Product3 = () => {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
+    const router = useRouter();
+    console.log(router.query);
 
     return (
         <div className="md:flex items-start justify-center bg-white max-w-7xl mx-auto my-3 rounded-lg shadow-lg shadow-violet-400 py-12 2xl:px-20 md:px-6 px-4">
