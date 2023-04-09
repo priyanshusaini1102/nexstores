@@ -50,18 +50,19 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <NavigationLink 
+                      <Link 
                         key={item.name}
                         item={item}
+                        href={item.href}
                         currentRoute={router.route}
                         className={classNames(
-                          item.current ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
+                          (item.href == router.route) ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
                           'rounded-md px-3 py-2 text-sm font-medium '
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </NavigationLink>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -79,7 +80,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-violet-900 text-white' : 'text-black hover:bg-violet-700 hover:text-black',
+                    (item.href == router.route) ? 'bg-violet-900 text-white' : 'text-black hover:bg-violet-700 hover:text-black',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -96,21 +97,5 @@ const Navbar = () => {
   )
 }
 
-function NavigationLink({ currentRoute, item }) {
-  const isActive = currentRoute == item.href;
-  return (
-    <Link 
-    key={item.name}
-    href={item.href}
-    className={classNames(
-      isActive ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
-      'rounded-md px-3 py-2 text-sm font-medium '
-    )}
-    aria-current={item.current ? 'page' : undefined}
-  >
-    {item.name}
-  </Link>
-  );
-}
 
 export default Navbar
