@@ -50,9 +50,10 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link 
+                      <NavigationLink 
                         key={item.name}
-                        href={item.href}
+                        item={item}
+                        currentRoute={router.route}
                         className={classNames(
                           item.current ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
                           'rounded-md px-3 py-2 text-sm font-medium '
@@ -60,7 +61,7 @@ const Navbar = () => {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </Link>
+                      </NavigationLink>
                     ))}
                   </div>
                 </div>
@@ -95,16 +96,20 @@ const Navbar = () => {
   )
 }
 
-function NavigationLink({ href, text, router }) {
-  const isActive = router.asPath === (href === "/home" ? "/" : href);
+function NavigationLink({ currentRoute, item }) {
+  const isActive = currentRoute == item.href;
   return (
-      <Link href={href === "/home" ? "/" : href} passHref>
-          <Link
-              href={href === "/home" ? "/" : href}
-              className={`${isActive && "nav_item_active"} nav_item`}>
-              {text}
-          </Link>
-      </Link>
+    <Link 
+    key={item.name}
+    href={item.href}
+    className={classNames(
+      isActive ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
+      'rounded-md px-3 py-2 text-sm font-medium '
+    )}
+    aria-current={item.current ? 'page' : undefined}
+  >
+    {item.name}
+  </Link>
   );
 }
 
