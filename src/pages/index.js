@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Banner from '@/components/Banner'
 import ProductCard from '@/components/ProductCard'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,12 +18,8 @@ export default function Home() {
       <ProductCard />
       <ProductCard />
       <ProductCard />
+      <Link href={'./product/1'} ><ProductCard /></Link>
       </div>
-
-      <div className="shadow-inner shadow-violet-500  w-fit -z-10 mx-auto">
-        <div className='m-12 p-4 text-violet-400 font-semibold w-fit mx-auto top-24 left-10 z-10 shadow-inner rounded-md shadow-violet-500   ' > <p className='' > Hello, This is the Home page.</p></div>
-      </div>
-
 
     </>
   )

@@ -1,10 +1,11 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import Logo from '../../public/img/NEXSTORES-removebg.png'
+import Router, { useRouter } from 'next/router'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -17,6 +18,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+
+  const router = useRouter();
+
   return (
     <div>
         <Disclosure as="nav" className=" bg-white text-black shadow shadow-violet-300 ">
@@ -38,15 +42,15 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={Logo} className='block h-8 w-auto lg:hidden' alt="Nexstores"  />
-                  <div className='hidden md:flex space-x-2 items-center font-sans font-semibold' >
+                  <Link href={'/'} className='hidden md:flex space-x-2 items-center font-sans font-semibold' >
                     <Image src={Logo} className='hidden h-8 w-auto lg:block' alt="Nexstores"  />
                     <span className="text-black" >Nexstores</span>
-                  </div>
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link
+                      <Link 
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -89,6 +93,19 @@ const Navbar = () => {
     </Disclosure>
     </div>
   )
+}
+
+function NavigationLink({ href, text, router }) {
+  const isActive = router.asPath === (href === "/home" ? "/" : href);
+  return (
+      <Link href={href === "/home" ? "/" : href} passHref>
+          <Link
+              href={href === "/home" ? "/" : href}
+              className={`${isActive && "nav_item_active"} nav_item`}>
+              {text}
+          </Link>
+      </Link>
+  );
 }
 
 export default Navbar
