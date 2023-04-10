@@ -4,17 +4,17 @@ import productImg from '../../public/img/products/clothing-store-app.png'
 import Link from 'next/link'
 
 const ProductCard = ({key,product}) => {
-
   return (
-    <Link key={key} href={`./product/${product?._id}`} > 
     <div className='shadow-md border text-white bg-white w-60 rounded' >
-        <Image className='rounded' src={productImg} alt='Product Image'  />
+        <div className='relative w-60 h-52' >
+          <Image className='' src={product.imageUrl} fill alt='Product Image'  />
+        </div>
         <div className='text-gray-700 font-sans p-3 font-semibold text-center' >
-          <p>Clothing Store App</p>
-          <p>₹10,000</p>
+          <p>{product.name}d</p>
+          <p>{product.type}</p>
+          <p>₹{product.price}</p>
         </div>
     </div>
-    </Link>
   )
 }
 
