@@ -10,7 +10,7 @@ const ProductCard = ({key,product}) => {
           <Image className='' src={product.imageUrl} fill alt='Product Image'  />
         </div>
         <div className='text-gray-700 font-sans p-3 font-semibold text-center' >
-          <p>{product.name}d</p>
+          <p>{product.name}</p>
           <p>{product.type}</p>
           <p>₹{product.price}</p>
         </div>

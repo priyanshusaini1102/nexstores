@@ -54,7 +54,7 @@ const Navbar = () => {
                         key={item.name}
                         item={item}
                         href={item.href}
-                        currentRoute={router.route}
+                        currentroute={router.route}
                         className={classNames(
                           (item.href == router.route) ? 'shadow-violet-800 shadow-inner text-violet-800 bg-gray-50' : 'text-gray-500 hover:shadow-violet-700 shadow hover:text-black',
                           'rounded-md px-3 py-2 text-sm font-medium '

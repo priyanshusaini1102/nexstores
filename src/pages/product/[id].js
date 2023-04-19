@@ -1,30 +1,47 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Product3 = () => {
+import { createClient } from "next-sanity";
+import Image from "next/image";
+import imageUrlBuilder from '@sanity/image-url';
+// console.log(router.query);
+
+const client = createClient({
+    projectId: "efawyltx",
+    dataset: "production",
+    apiVersion: "2021-10-14",
+    useCdn: false
+  });
+
+const builder = imageUrlBuilder(client)
+
+function urlFor(source) {
+    return builder.image(source)
+}
+
+const Product3 = ({product}) => {
+
+    useEffect(()=>{
+        console.log(product);
+    },[]);
+
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
+    const [name, setName] = useState("Food Store ");
     const router = useRouter();
-    console.log(router.query);
+    console.log(router.query.id);
 
     return (
-        <div className="md:flex items-start justify-center bg-white max-w-7xl mx-auto my-3 rounded-lg shadow-lg shadow-violet-400 py-12 2xl:px-20 md:px-6 px-4">
-            <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-                <img className="w-full" alt="img of a girl posing" src="https://i.ibb.co/QMdWfzX/component-image-one.png" />
-                <img className="mt-6 w-full" alt="img of a girl posing" src="https://i.ibb.co/qxkRXSq/component-image-two.png" />
+        <div className="md:flex justify-between bg-white max-w-5xl mx-auto my-3 rounded-lg shadow-lg shadow-violet-400 py-12 2xl:px-20 md:px-6 px-4">
+            <div className=" w-96 h-96 mx-auto rounded-lg md:block hidden relative">
+                <Image className='rounded-lg' src={urlFor(product.image).url()} fill alt='Product Image'  />
             </div>
-            <div className="md:hidden">
-                <img className="w-full" alt="img of a girl posing" src="https://i.ibb.co/QMdWfzX/component-image-one.png" />
-                <div className="flex items-center justify-between mt-3 space-x-4 md:space-x-0">
-                    <img alt="img-tag-one" className="md:w-48 md:h-48 w-full" src="https://i.ibb.co/cYDrVGh/Rectangle-245.png" />
-                    <img alt="img-tag-one" className="md:w-48 md:h-48 w-full" src="https://i.ibb.co/f17NXrW/Rectangle-244.png" />
-                    <img alt="img-tag-one" className="md:w-48 md:h-48 w-full" src="https://i.ibb.co/cYDrVGh/Rectangle-245.png" />
-                    <img alt="img-tag-one" className="md:w-48 md:h-48 w-full" src="https://i.ibb.co/f17NXrW/Rectangle-244.png" />
-                </div>
+            <div className="md:hidden relative mx-auto w-96 h-96">
+                <Image className='' src={urlFor(product.image).url()} fill alt='Product Image'  />
             </div>
             <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                 <div className="border-b border-gray-200 pb-6">
-                    <p className="text-sm leading-none text-gray-600">Balenciaga Fall Collection</p>
+                    <p className="text-sm leading-none text-gray-600">{product.type}</p>
                     <h1
                         className="
 							lg:text-2xl
@@ -36,39 +53,16 @@ const Product3 = () => {
 							mt-2
 						"
                     >
-                        Balenciaga Signature Sweatshirt
+                        {product.name}
                     </h1>
                 </div>
-                <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-                    <p className="text-base leading-4 text-gray-800">Colours</p>
-                    <div className="flex items-center justify-center">
-                        <p className="text-sm leading-none text-gray-600">Smoke Blue with red accents</p>
-                        <div
-                            className="
-								w-6
-								h-6
-								bg-gradient-to-b
-								from-gray-900
-								to-indigo-500
-								ml-3
-								mr-4
-								cursor-pointer
-							"
-                        ></div>
-                        <svg className="cursor-pointer" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L5 5L1 9" stroke="#4B5563" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </div>
+                <div>
+                    <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 mt-7">{product.description}</p>
+                    <p className="text-base leading-4 mt-7 text-gray-600">Tech Stack used: Next.js</p>
+                    <p className="text-base leading-4 mt-4 text-gray-600">Backend CMS: Sanity</p>
+                    <p className="text-base leading-4 mt-4 text-gray-600">Deployment: Vercel</p>
                 </div>
-                <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-                    <p className="text-base leading-4 text-gray-800">Size</p>
-                    <div className="flex items-center justify-center">
-                        <p className="text-sm leading-none text-gray-600 mr-3">38.2</p>
-                        <svg className="cursor-pointer" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L5 5L1 9" stroke="#4B5563" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </div>
-                </div>
+                
                 <button
                     className="
 						focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
@@ -81,6 +75,7 @@ const Product3 = () => {
 						bg-gray-800
 						w-full
 						py-4
+                        mt-5
 						hover:bg-gray-700
 					"
                 >
@@ -90,20 +85,12 @@ const Product3 = () => {
                         <path d="M13.69 13.8567C14.1563 13.3905 14.4738 12.7966 14.6025 12.15C14.7312 11.5033 14.6653 10.8331 14.413 10.2239C14.1608 9.61476 13.7335 9.09411 13.1853 8.72779C12.6372 8.36148 11.9926 8.16595 11.3333 8.16595C10.674 8.16595 10.0295 8.36148 9.48133 8.72779C8.93314 9.09411 8.5059 9.61476 8.25364 10.2239C8.00138 10.8331 7.93543 11.5033 8.06412 12.15C8.19282 12.7966 8.51039 13.3905 8.97667 13.8567L11.3333 16.2142L13.69 13.8567Z" stroke="white" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M11.333 11.5V11.5083" stroke="white" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    Check availability in store
+                    Check Demo
                 </button>
-                <div>
-                    <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 mt-7">It is a long established fact that a reader will be distracted by thereadable content of a page when looking at its layout. The point of usingLorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                    <p className="text-base leading-4 mt-7 text-gray-600">Product Code: 8BN321AF2IF0NYA</p>
-                    <p className="text-base leading-4 mt-4 text-gray-600">Length: 13.2 inches</p>
-                    <p className="text-base leading-4 mt-4 text-gray-600">Height: 10 inches</p>
-                    <p className="text-base leading-4 mt-4 text-gray-600">Depth: 5.1 inches</p>
-                    <p className="md:w-96 text-base leading-normal text-gray-600 mt-4">Composition: 100% calf leather, inside: 100% lamb leather</p>
-                </div>
                 <div>
                     <div className="border-t border-b py-4 mt-7 border-gray-200">
                         <div onClick={() => setShow(!show)} className="flex justify-between items-center cursor-pointer">
-                            <p className="text-base leading-4 text-gray-800">Shipping and returns</p>
+                            <p className="text-base leading-4 text-gray-800">EMI options</p>
                             <button
                                 className="
 									cursor-pointer
@@ -148,5 +135,35 @@ const Product3 = () => {
         </div>
     );
 };
+
+
+
+export async function getStaticPaths() {
+    const products = await client.fetch(`*[_type == "products"]{
+        "id": _id,
+      }`);
+
+    const paths = products.map((product) => ({
+      params: { id: product.id },
+    }))
+  
+    return { paths, fallback: true }
+  }
+  
+  export async function getStaticProps({ params }) {
+    const products = await client.fetch(`*[_type == "products" && _id == "${params.id}"]{
+        "id": _id,
+        name,
+        type,
+        price,
+        "imageUrl": image.asset->url,
+    
+      }`);
+
+      const product = await client.getDocument(`${params.id}`);
+      client.getDocument()
+    return { props: { product } }
+  }
+
 
 export default Product3;
