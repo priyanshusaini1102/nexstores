@@ -21,15 +21,8 @@ function urlFor(source) {
 
 const Product3 = ({product}) => {
 
-    useEffect(()=>{
-        console.log(product);
-    },[]);
-
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
-    const [name, setName] = useState("Food Store ");
-    const router = useRouter();
-    console.log(router.query.id);
 
     return (
         <div className="md:flex justify-between bg-white max-w-5xl mx-auto my-3 rounded-lg shadow-lg shadow-violet-400 py-12 2xl:px-20 md:px-6 px-4">
