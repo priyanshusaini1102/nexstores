@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "next-sanity";
 import Image from "next/image";
 import imageUrlBuilder from '@sanity/image-url';
-// console.log(router.query);
 
 const client = createClient({
     projectId: "efawyltx",
@@ -17,6 +16,12 @@ const builder = imageUrlBuilder(client)
 
 function urlFor(source) {
     return builder.image(source)
+}
+
+export async function getServerSideProps({ params }) {
+    const product = await client.getDocument(`${params.id}`);
+    client.getDocument()
+  return { props: { product } }
 }
 
 const Product3 = ({product}) => {
@@ -128,35 +133,5 @@ const Product3 = ({product}) => {
         </div>
     );
 };
-
-
-
-export async function getStaticPaths() {
-    const products = await client.fetch(`*[_type == "products"]{
-        "id": _id,
-      }`);
-
-    const paths = products.map((product) => ({
-      params: { id: product.id },
-    }))
-  
-    return { paths, fallback: true }
-  }
-  
-  export async function getStaticProps({ params }) {
-    const products = await client.fetch(`*[_type == "products" && _id == "${params.id}"]{
-        "id": _id,
-        name,
-        type,
-        price,
-        "imageUrl": image.asset->url,
-    
-      }`);
-
-      const product = await client.getDocument(`${params.id}`);
-      client.getDocument()
-    return { props: { product } }
-  }
-
 
 export default Product3;

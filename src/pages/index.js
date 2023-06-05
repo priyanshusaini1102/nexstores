@@ -31,7 +31,7 @@ const client = createClient({
   useCdn: false
 });
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const products = await client.fetch(`*[_type == "products"]{
     "id": _id,
     name,
