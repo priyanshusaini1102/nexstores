@@ -138,9 +138,10 @@ export async function getServerSideProps() {
     name,
     type,
     price,
-    "imageUrl": image.asset->url,
-
+    'images': images[].asset->url,
+    "imageUrl": image.asset->url
   }`);
+  console.log(products);
 
   return {
     props: {

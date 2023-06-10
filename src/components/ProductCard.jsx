@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 const ProductCard = ({product}) => {
   return (
-    <div className='shadow-md border text-white bg-white w-60 rounded' >
-        <div className='relative w-60 h-52'>
+    <div className='shadow-md border text-white bg-white sm:w-60 w-48  rounded' >
+        <div className='relative sm:w-60 w-48 sm:h-52 h-44'>
     <Image
-      src={product.imageUrl}
+      src={product?.images[0]}
       alt='Product Image'
       fill
       sizes="(max-width: 640px) 100vw, 640px"
