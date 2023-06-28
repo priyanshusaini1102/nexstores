@@ -20,10 +20,27 @@ function urlFor(source) {
 }
 
 export async function getServerSideProps({ params }) {
-    const product = await client.getDocument(`${params.id}`);
-    client.getDocument()
-  return { props: { product } }
-}
+    try {
+      const productId = params?.id;
+      if (!productId) {
+        throw new Error('Missing product ID parameter');
+      }
+  
+      const product = await client.getDocument(productId);
+  
+      return {
+        props: {
+          product,
+        },
+      };
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      return {
+        notFound: true,
+      };
+    }
+  }
+  
 
 const Product3 = ({product}) => {
 

@@ -133,19 +133,28 @@ const client = createClient({
 });
 
 export async function getServerSideProps() {
-  const products = await client.fetch(`*[_type == "products"]{
-    "id": _id,
-    name,
-    type,
-    price,
-    'images': images[].asset->url,
-    "imageUrl": image.asset->url
-  }`);
-  console.log(products);
-
-  return {
-    props: {
-      products,
-    },
-  };
+  try {
+    const products = await client.fetch(`*[_type == "products"]{
+      "id": _id,
+      name,
+      type,
+      price,
+      'images': images[].asset->url,
+      "imageUrl": image.asset->url
+    }`);
+    
+    return {
+      props: {
+        products,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return {
+      props: {
+        products: [],
+      },
+    };
+  }
 }
+
