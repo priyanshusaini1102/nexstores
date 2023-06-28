@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start",
+    "start": "cross-env PORT=80 next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.17",
     "@sanity/image-url": "^1.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
